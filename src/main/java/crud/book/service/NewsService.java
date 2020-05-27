@@ -14,6 +14,7 @@ public class NewsService {
 
   private final NewsRepository newsRepository;
 
+  // @Autowired лучше не использовать, надо юзать инжект через конструкторы, а еще можно по разному + ломбок прикрутить
   public NewsService(NewsRepository newsRepository) {
     this.newsRepository = newsRepository;
   }

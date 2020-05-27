@@ -66,7 +66,7 @@ public class NewsController {
 
   @PostMapping(value = "/news/add")
   public String News(Model model,
-                     @ModelAttribute("news") News news) throws Exception {
+                     @ModelAttribute("news") News news) {
     news.setPublished(true);
     News newNews = newsService.save(news);
     return "redirect:/news";
