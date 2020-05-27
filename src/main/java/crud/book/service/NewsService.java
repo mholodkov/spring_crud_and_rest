@@ -8,9 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -67,5 +64,11 @@ public class NewsService {
             newsRepository.save(bookFromDb);
         }
     }
+
+    public List findByTitle(String title) {
+        List<News> news = newsRepository.findByTitle(title);
+        return news;
+    }
+
 }
 

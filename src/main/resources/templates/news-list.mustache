@@ -28,6 +28,10 @@
             <th>Edit</th>
             <th>Delete</th>
         </tr>
+        <form method="get" action="/news">
+            <input type="text" name="title">
+            <button type="submit">Найти по Названию новости!</button>
+        </form>
         {{#news}}
             <tr>
                 <td><a>{{id}}</a></td>

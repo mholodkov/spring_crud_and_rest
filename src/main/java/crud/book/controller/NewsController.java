@@ -9,13 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class NewsController {
-//    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final int ROW_PER_PAGE = 10;
+    private final int ROW_PER_PAGE = 5;
 
     @Autowired
     private NewsService newsService;
@@ -31,9 +28,14 @@ public class NewsController {
     }
 
     @GetMapping(value = "/news")
-    public String News(Model model,
+    public String News(@RequestParam(required = false, defaultValue = "") String title, Model model,
                        @RequestParam(value = "page", defaultValue = "1") int pageNumber) {
-        List<News> news = newsService.findAll(pageNumber, ROW_PER_PAGE);
+        Iterable<News> news;
+        if (title != null && !title.isEmpty()) {
+            news = newsService.findByTitle(title);
+        } else {
+            news = newsService.findAll(pageNumber, ROW_PER_PAGE);
+        }
 
         long count = newsService.count();
         boolean hasPrev = pageNumber > 1;
@@ -52,7 +54,7 @@ public class NewsController {
         model.addAttribute("add", true);
         model.addAttribute("news", news);
 
-        return "news-edit";
+        return "news-create";
     }
 
     @PostMapping(value = "/news/add")

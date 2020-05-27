@@ -3,7 +3,6 @@ package crud.book.model;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
