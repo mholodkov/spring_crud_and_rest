@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>News List</h1>
+
+<div>
+    <nobr>
+        <a href="/news/add">Add News</a> |
+        <a href="/">Back to Index</a>
+    </nobr>
+</div>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Date Creation</th>
+            <th>Date Modify</th>
+            <th>Published</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <form method="get" action="/news">
+            <input type="text" name="title">
+            <button type="submit">Найти по Названию новости!</button>
+        </form>
+        {{#news}}
+            <tr>
+                <td><a>{{id}}</a></td>
+                <td><a>{{title}}</a></td>
+                <td><a>{{description}}</a></td>
+                <td><a>{{author}}</a></td>
+                <td><a>{{creationDate}}</a></td>
+                <td><a>{{updateDate}}</a></td>
+                <td><a>{{published}}</a></td>
+                <td><a href="/news/{{id}}/edit">Edit</a></td>
+                <td><a href="/news/{{id}}/delete">Delete</a></td>
+            </tr>
+        {{/news}}
+    </table>
+</div>
+<br/><br/>
+<div>
+    <nobr>
+        {{#hasPrev}}<a href="/news?page={{prev}}">Prev</a>&nbsp;&nbsp;&nbsp;{{/hasPrev}}
+        {{#hasNext}}<a href="/news?page={{next}}">Next</a>{{/hasNext}}
+    </nobr>
+</div>
+{{>footer}}
+</body>
+</html>

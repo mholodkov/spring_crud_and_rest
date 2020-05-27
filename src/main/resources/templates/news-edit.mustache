@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{{#add}}Create new News{{/add}}{{^add}}Edit News{{/add}}</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>{{#add}}Create new News:{{/add}}{{^add}}Edit News:{{/add}}</h1>
+<a href="/news">Back to News List</a>
+<br/><br/>
+<form action="{{#add}}/news/add{{/add}}{{^add}}/news/{{news.id}}/edit{{/add}}" name="news" method="POST">
+    <table border="0">
+        {{#id}}
+            <tr>
+                <td>ID</td>
+                <td>:</td>
+                <td>{{id}}</td>
+            </tr>
+        {{/id}}
+        <tr>
+            <td>Title</td>
+            <td>:</td>
+            <td><input type="text" name="title" value="{{#news.title}}{{news.title}}{{/news.title}}" /></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>:</td>
+            <td><input type="text" name="description" value="{{#news.description}}{{news.description}}{{/news.description}}" /></td>
+        </tr>
+        <tr>
+            <td>Author</td>
+            <td>:</td>
+            <td><input type="text" name="author" value="{{#news.author}}{{news.author}}{{/news.author}}" /></td>
+        </tr>
+        <tr>
+            <td>Published</td>
+            <td>:</td>
+            <td><input type="text" name="published"  value="{{#news.published}}{{news.published}}{{/news.published}}" placeholder="true/false"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="{{#add}}Create{{/add}}{{^add}}Update{{/add}}" />
+</form>
+
+<br/>
+<!-- Check if errorMessage is not null and not empty -->
+{{>footer}}
+</body>
+</html>
