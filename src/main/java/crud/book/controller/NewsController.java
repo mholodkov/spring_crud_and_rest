@@ -91,7 +91,7 @@ public class NewsController {
     return "redirect:/news";
   }
 
-  @GetMapping("/news/{newsId}/delete")
+  @PostMapping("/news/{newsId}/delete")
   public String deleteUser(@PathVariable("newsId") Long newsId) throws Exception {
     newsService.deleteById(newsId);
     return "redirect:/news";
