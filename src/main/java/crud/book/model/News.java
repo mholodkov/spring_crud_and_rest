@@ -31,5 +31,5 @@ public class News {
     private LocalDate creationDate;
     @Column(name = "update_date")
     private Date updateDate;
-
+    
 }

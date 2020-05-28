@@ -27,6 +27,7 @@ public class NewsController {
     this.newsService = newsService;
   }
 
+
   @GetMapping(value = {"/", "/index"})
   public String index(Model model) {
     model.addAttribute("title", title);
@@ -35,7 +36,7 @@ public class NewsController {
 
   @GetMapping(value = "/news")
   public String News(@RequestParam(required = false, defaultValue = "") String title, Model model,
-                     @RequestParam(value = "page", defaultValue = "1") int pageNumber) {
+      @RequestParam(value = "page", defaultValue = "1") int pageNumber) {
     Iterable<News> news;
     if (title != null && !title.isEmpty()) {
       news = newsService.findByTitle(title);
@@ -66,7 +67,7 @@ public class NewsController {
 
   @PostMapping(value = "/news/add")
   public String News(Model model,
-                     @ModelAttribute("news") News news) {
+      @ModelAttribute("news") News news) {
     news.setPublished(true);
     News newNews = newsService.save(news);
     return "redirect:/news";
@@ -83,8 +84,8 @@ public class NewsController {
 
   @PostMapping(value = {"/news/{newsId}/edit"})
   public String updateUser(Model model,
-                           @PathVariable long newsId,
-                           @ModelAttribute("news") News news) {
+      @PathVariable long newsId,
+      @ModelAttribute("news") News news) {
 
     news.setId(newsId);
     newsService.saveUpdateBook(news);

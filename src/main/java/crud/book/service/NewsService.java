@@ -60,9 +60,13 @@ public class NewsService {
   public void saveUpdateBook(News news) {
     final Optional<News> optionalBook = newsRepository.findById(news.getId());
     if (optionalBook.isPresent()) {
-      final News bookFromDb = optionalBook.get();
-      bookFromDb.setUpdateDate(new Date());
-      newsRepository.save(bookFromDb);
+      final News newsFromDb = optionalBook.get();
+      newsFromDb.setUpdateDate(new Date());
+      newsFromDb.setAuthor(news.getAuthor());
+      newsFromDb.setPublished(news.isPublished());
+      newsFromDb.setTitle(news.getTitle());
+      newsFromDb.setDescription(news.getDescription());
+      newsRepository.save(newsFromDb);
     }
   }
 

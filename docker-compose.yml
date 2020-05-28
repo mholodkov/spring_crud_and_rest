@@ -1,7 +1,12 @@
-version: '3.1'
-
+version: '3'
 services:
 
-  db:
-    image: postgres
+  postgres:
     restart: always
+    image: postgres
+    environment:
+      - POSTGRES_DB=crud
+      - POSTGRES_USER=mh
+      - POSTGRES_PASSWORD=1q2w3e4r
+    ports:
+      - 5432:5432
